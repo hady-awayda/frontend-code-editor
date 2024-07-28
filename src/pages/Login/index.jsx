@@ -1,5 +1,5 @@
-const Home = () => {
+const Login = () => {
   return <></>;
 };
 
-export default Home;
+export default Login;
