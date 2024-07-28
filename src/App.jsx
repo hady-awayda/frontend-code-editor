@@ -1,32 +1,37 @@
 import "./App.css";
+
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
-import CodeEditor from "./pages/CodeEditor";
+import Editor from "./pages/Editor";
 import Admin from "./pages/Admin";
-import { Provider } from "react-redux";
-import store from "./State/Stores/store";
-import { Navbar, Footer } from "./src/components/Structural";
+import Navbar from "./components/Layout/Navbar";
+import Footer from "./components/Layout/Footer";
+
+// import { Provider } from "react-redux";
+// import store from "./State/Stores/store";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <Provider store={store}>
-      <Navbar />
+    <>
+      {/* <Provider store={store}> */}
       <Router>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/Register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/recipe/:id" element={<CodeEditor />} />
-          <Route path="/create-recipe" element={<Admin />} />
+          <Route path="/editor" element={<Editor />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
+        <Footer />
       </Router>
-      <Footer />
-    </Provider>
+      {/* </Provider> */}
+    </>
   );
 }
 

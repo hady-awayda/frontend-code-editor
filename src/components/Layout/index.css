@@ -1,0 +1,14 @@
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px;
+  width: 100%;
+}
+
+.home-link {
+}
+
+.links {
+  display: flex;
+  gap: 30px;
+}

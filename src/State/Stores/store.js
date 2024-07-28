@@ -6,7 +6,7 @@ const store = createSlice({
     value: "",
   },
   reducers: {
-    increment: (state) => {
+    getState: (state) => {
       state.value += 1;
     },
     decrement: (state) => {
