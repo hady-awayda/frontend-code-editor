@@ -18,6 +18,11 @@
   max-width: 1200px;
 }
 
+.title {
+  font-size: 1.5rem;
+  color: #61dafb;
+}
+
 .navbar .links a {
   color: #61dafb;
   margin-left: 1rem;
@@ -26,16 +31,5 @@
 }
 
 .navbar .links a:hover {
-  color: #21a1f1;
-}
-
-.navbar .home-link a {
-  color: #61dafb;
-  text-decoration: none;
-  font-size: 1.5rem;
-  transition: color 0.3s;
-}
-
-.navbar .home-link a:hover {
   color: #21a1f1;
 }
