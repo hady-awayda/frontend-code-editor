@@ -1,5 +1,13 @@
+import "./style.css";
+
 const Footer = () => {
-  return <h2>Footer</h2>;
+  return (
+    <footer className="footer">
+      <div className="footer-content">
+        <p>© 2024 Interactive Code Editor. All rights reserved.</p>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

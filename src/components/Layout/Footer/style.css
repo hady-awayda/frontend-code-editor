@@ -1,0 +1,15 @@
+/* style.css */
+
+.footer {
+  background-color: #282c34;
+  color: #61dafb;
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+}
+
+.footer-content {
+  text-align: center;
+}
