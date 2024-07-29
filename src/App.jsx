@@ -6,7 +6,7 @@ import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import Editor from "./pages/Editor";
 import Admin from "./pages/Admin";
-import Navbar from "./components/Layout/Navbar";
+import Navbar from "./components/Layout";
 import Footer from "./components/Layout/Footer";
 
 // import { Provider } from "react-redux";
