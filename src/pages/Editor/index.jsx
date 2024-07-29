@@ -1,3 +1,4 @@
+import "./style.css"
 const Editor = () => {
   return <h1>This is the Editor Page</h1>;
 };

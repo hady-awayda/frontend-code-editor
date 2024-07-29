@@ -1,3 +1,4 @@
+import "./style.css"
 const Profile = () => {
   return <h1>User Profile</h1>;
 };
