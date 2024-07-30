@@ -6,7 +6,6 @@ const baseURL = import.meta.env.VITE_APP_DEPLOYMENT_BASE_URL;
 axios.defaults.baseURL = baseURL;
 
 const login = async (email, password) => {
-  
   console.log(baseURL);
 
   const { data } = await axios.post("auth/login", {
