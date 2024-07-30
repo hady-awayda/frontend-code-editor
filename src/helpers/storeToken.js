@@ -14,7 +14,9 @@ function storeToken(data) {
 
       localStorage.setItem("jwtData", JSON.stringify(tokenObject));
 
-      window.location.href = "/";
+      decodedToken.role
+        ? (window.location.href = "/admin")
+        : (window.location.href = "/");
     } else {
       throw new Error("Invalid token structure");
     }
