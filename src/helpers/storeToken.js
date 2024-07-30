@@ -1,6 +1,10 @@
 import decodeJwtToken from "./decodeJWT";
+// import { useDispatch } from "react-redux";
+// import { setToken } from "../data/redux/actions/authActions";
 
 function storeToken(data) {
+  // const dispatch = useDispatch();
+
   if (data.token) {
     const decodedToken = decodeJwtToken(data.token);
 
@@ -10,11 +14,11 @@ function storeToken(data) {
         userData: decodedToken,
       };
 
-      //   stateSet(tokenObject);
+      // dispatch(setToken(tokenObject));
 
       localStorage.setItem("jwtData", JSON.stringify(tokenObject));
 
-      decodedToken.role
+      decodedToken.role === "admin"
         ? (window.location.href = "/admin")
         : (window.location.href = "/");
     } else {

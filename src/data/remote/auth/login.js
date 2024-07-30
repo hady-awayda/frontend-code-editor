@@ -1,5 +1,5 @@
 import axios from "axios";
-import storeToken from "../../helpers/storeToken";
+import storeToken from "../../../helpers/storeToken";
 
 const baseURL = import.meta.env.VITE_APP_DEPLOYMENT_BASE_URL;
 // const baseURL = import.meta.env.VITE_APP_BASE_URL;
