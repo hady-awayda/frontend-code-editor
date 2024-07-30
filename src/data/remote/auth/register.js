@@ -3,17 +3,18 @@ import storeToken from "../../../helpers/storeToken";
 
 axios.defaults.baseURL = import.meta.env.VITE_APP_DEPLOYMENT_BASE_URL;
 
-const login = async (email, password) => {
+const register = async (name, email, password) => {
   try {
-    const { data } = await axios.post("auth/login", {
+    const { data } = await axios.post("auth/register", {
+      name,
       email,
       password,
     });
 
     storeToken(data.authorization);
   } catch (error) {
-    throw new Error(error.response.data.message || "Login failed");
+    throw new Error(error.response.data.message || "Registration failed");
   }
 };
 
-export default login;
+export default register;
