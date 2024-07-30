@@ -1,12 +1,9 @@
 .footer {
   background-color: #282c34;
-  color: #61dafb;
+  color: #eafbff;
   padding: 1rem;
   text-align: center;
   width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
 }
 
 .footer-content {

@@ -3,6 +3,7 @@ import decodeJwtToken from "./decodeJWT";
 // import { setToken } from "../data/redux/actions/authActions";
 
 function storeToken(data) {
+  console.log(data);
   // const dispatch = useDispatch();
 
   if (data.token) {

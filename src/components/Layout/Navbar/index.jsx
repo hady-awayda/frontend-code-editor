@@ -9,7 +9,6 @@ const Navbar = () => {
           CodeMasters
         </Link>
         <div className="links">
-          <Link to="/admin">Admin</Link>
           <Link to="/editor">Editor</Link>
           <Link to="/profile">Profile</Link>
           <Link to="/login">Login</Link>

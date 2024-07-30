@@ -2,9 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(
-    100vh - 8rem
-  );
+  min-height: calc(100vh - 8rem);
   width: 100%;
   background-color: #1e1e1e;
 }
@@ -22,7 +20,7 @@
 .register-form h2 {
   margin-bottom: 1.5rem;
   font-size: 24px;
-  color: #61dafb;
+  color: #cef4ff;
 }
 
 .form-group {
@@ -50,7 +48,7 @@
 
 .form-group input:focus,
 .form-group select:focus {
-  border-color: #61dafb;
+  border-color: #cef4ff;
   outline: none;
   box-shadow: 0 0 0 0.2rem rgba(97, 218, 251, 0.25);
 }
@@ -58,7 +56,7 @@
 .register-button {
   width: 100%;
   padding: 0.75rem;
-  background-color: #61dafb;
+  background-color: #cef4ff;
   border: none;
   border-radius: 4px;
   color: #282c34;
