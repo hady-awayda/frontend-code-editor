@@ -5,6 +5,7 @@ import Login from "../../pages/Login";
 import Admin from "../../pages/Admin";
 import Editor from "../../pages/Editor";
 import Profile from "../../pages/Profile";
+import UserPage from "../../pages/User";
 import Register from "../../pages/Register";
 import Navbar from "../../components/Structural/Navbar";
 import Footer from "../../components/Structural/Footer";
@@ -25,6 +26,7 @@ const Body = ({ user, conversations, sourceCodes }) => {
         />
         <Route path="/editor" element={<Editor {...{ sourceCodes }} />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/user/:id" element={<UserPage />} />
       </Routes>
       <Footer />
     </Router>

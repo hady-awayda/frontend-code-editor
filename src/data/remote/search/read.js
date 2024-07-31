@@ -8,6 +8,8 @@ const search = async (username) => {
       headers: { Authorization: `Bearer ${token}` },
     });
 
+    console.log(data.data);
+
     return data.data;
   } catch (error) {
     throw error;

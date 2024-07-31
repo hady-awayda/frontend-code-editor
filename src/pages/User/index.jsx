@@ -1,10 +1,12 @@
 import "./style.css";
 import Conversation from "../../components/Cards/Conversation";
 import Chat from "../../components/Cards/Chat";
+import { useParams } from "react-router-dom";
 import { useState } from "react";
 
-const Profile = ({ user, conversations }) => {
-  const [id, setId] = useState(null);
+const UserPage = ({ user, conversations }) => {
+  const { id } = useParams();
+  // const [id, setId] = useState(null);
 
   const onConversationChange = (id) => {
     setId(id);
@@ -12,7 +14,7 @@ const Profile = ({ user, conversations }) => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">Profile</h1>
+      <h1 className="text-3xl font-bold mb-4">{id}</h1>
       <div className="mb-4">
         <p className="text-lg">
           <strong>Name:</strong> {user?.name}
@@ -38,4 +40,4 @@ const Profile = ({ user, conversations }) => {
   );
 };
 
-export default Profile;
+export default UserPage;
