@@ -7,6 +7,7 @@ const Chat = ({ id }) => {
   useEffect(() => {
     const fetchChat = async () => {
       const chat = await fetchUserMessages(id);
+
       setChat(chat);
     };
 
@@ -14,15 +15,15 @@ const Chat = ({ id }) => {
   }, [id]);
 
   return (
-    <div className="bg-gray-100 w-full p-4 rounded-lg shadow-md">
-      <div className="overflow-y-auto h-96">
+    <div className="bg-gray-100 w-full max-h-full p-4 rounded-lg shadow-md">
+      <div className="overflow-y-scroll chatbox-container pr-4 flex flex-col items-start">
         {chat.map((c) => (
           <div
             key={c.id}
-            className={`mb-4 p-3 rounded-lg max-w-xs ${
+            className={`mb-4 p-2 px-4 rounded-lg w-60 ${
               c.sender_id === id
-                ? "bg-blue-500 text-white self-end"
-                : "bg-white text-black self-start"
+                ? "bg-cyan-200 text-black font-semibold self-end"
+                : "bg-white text-black font-semibold"
             }`}
           >
             {c.message}

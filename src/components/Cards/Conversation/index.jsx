@@ -1,11 +1,11 @@
 const Conversation = ({ id, name, onConversationChange }) => {
   const switchConversation = () => {
-    onConversationChange(id);
+    onConversationChange(id, name);
   };
 
   return (
     <button onClick={switchConversation} className="conversation">
-      <div>{name}</div>
+      {name}
     </button>
   );
 };

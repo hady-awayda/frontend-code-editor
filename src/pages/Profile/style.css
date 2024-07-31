@@ -44,3 +44,7 @@
   flex-direction: column;
   gap: 8px;
 }
+
+.chatbox-container {
+  height: 450px;
+}
