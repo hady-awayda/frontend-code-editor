@@ -13,10 +13,6 @@ import useAuth from "../../components/hooks/useAuth";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const Body = ({ user, conversations, sourceCodes }) => {
-  // console.log(user);
-  // console.log(conversations);
-  // console.log(sourceCodes);
-
   return (
     <Router>
       <Navbar />
@@ -28,7 +24,7 @@ const Body = ({ user, conversations, sourceCodes }) => {
           path="/profile"
           element={<Profile {...{ user, conversations }} />}
         />
-        <Route path="/editor" element={<Editor />} />
+        <Route path="/editor" element={<Editor {...{ sourceCodes }} />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
       <Footer />

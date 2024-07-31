@@ -1,12 +1,7 @@
-/* .navbar {
-<<<<<<<< HEAD:src/components/Navbar/style.css
-  background-color: #181a1e;
-  color: #61dafb;
-========
+.navbar {
   background-color: #282c34;
   font-size: 1.1rem;
   color: #fff;
->>>>>>>> bc386f7dc9ca266cafa7e5eaa820ab0da31f8232:src/components/Structural/Navbar/style.css
   padding: 1rem;
   display: flex;
   justify-content: center;
@@ -27,19 +22,3 @@
   display: flex;
   gap: 2.75rem;
 }
-
-/* .links a {
-  color: #cef4ff;
-  text-decoration: none;
-  transition: color 0.3s;
-} */
-/* 
-.links .title-link {
-  font-size: 2rem;
-} */
-/* 
-.links a:hover,
-.links .title-link:hover {
-  color: #21a1f1;
-  text-decoration: none;
-} */

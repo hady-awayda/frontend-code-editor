@@ -9,7 +9,7 @@ import fetchSourceCodes from "../../data/remote/source_codes/data";
 import updateFile from "../../data/remote/source_codes/update";
 import createFile from "../../data/remote/source_codes/create";
 
-const CodeEditor = () => {
+const CodeEditor = ({ sourceCodes }) => {
   const editorRef = useRef(null);
   const [value, setValue] = useState("");
   const [files, setFiles] = useState([]);
@@ -22,19 +22,21 @@ const CodeEditor = () => {
     editor.focus();
   };
 
+  const fetchCodes = async () => {
+    const data = await fetchSourceCodes();
+    setFiles(data);
+
+    return data;
+  };
+
   useEffect(() => {
-    const fetchCodes = async () => {
-      const data = await fetchSourceCodes();
+    setFiles(sourceCodes);
 
-      setFiles(data);
+    const data = fetchCodes(sourceCodes);
 
-      if (data.length > 0) {
-        setValue(data[0].code);
-        setSelectedFile(data[0].id);
-      }
-    };
-
-    fetchCodes();
+    if (data.length > 0) {
+      setValue(data[0].code);
+    }
   }, []);
 
   const onFileChange = (id) => {
@@ -44,18 +46,12 @@ const CodeEditor = () => {
 
   const handleCodeSave = async () => {
     updateFile(selectedFile, value);
-
-    const data = await fetchSourceCodes();
-
-    setFiles(data);
+    fetchCodes();
   };
 
   const addFile = async () => {
     createFile(title, value);
-
-    const data = await fetchSourceCodes();
-
-    setFiles(data);
+    fetchCodes();
   };
 
   return (
