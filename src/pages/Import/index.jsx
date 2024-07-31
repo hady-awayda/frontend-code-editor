@@ -33,7 +33,7 @@ const BulkImport = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-8 h-3/4 flex justify-center items-center">
+    <div className="max-w-md mx-auto mt-8 h-5/6 flex flex-col justify-center items-center">
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="flex items-center justify-center h-60 w-96">
           <label
@@ -72,9 +72,11 @@ const BulkImport = () => {
             />
           </label>
         </div>
-        {file && (
-          <p className="text-sm text-gray-500">Selected file: {file.name}</p>
-        )}
+        <div className="h-8">
+          {file && (
+            <p className="text-sm text-gray-500">Selected file: {file.name}</p>
+          )}
+        </div>
         <button
           type="submit"
           className={`w-full px-4 py-2 text-white font-semibold rounded-lg ${
@@ -87,15 +89,17 @@ const BulkImport = () => {
           {isLoading ? "Uploading..." : "Bulk Import"}
         </button>
       </form>
-      {message && (
-        <p
-          className={`mt-4 text-center ${
-            message.includes("Error") ? "text-red-500" : "text-green-500"
-          }`}
-        >
-          {message}
-        </p>
-      )}
+      <div className="h-24">
+        {message && (
+          <p
+            className={`mt-4 text-center ${
+              message.includes("Error") ? "text-red-500" : "text-green-500"
+            }`}
+          >
+            {message}
+          </p>
+        )}
+      </div>
     </div>
   );
 };
