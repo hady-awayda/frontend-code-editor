@@ -61,7 +61,7 @@ const CodeEditor = () => {
   return (
     <Box>
       <HStack spacing={4}>
-        <div className=" text-white flex justify-start flex-col items-start gap-8 files-container overflow-scroll w-72">
+        <div className=" text-white flex justify-start flex-col items-start gap-8 files-container w-72">
           <h1 className="text-3xl font-bold text-gray-200">Files</h1>
           <div className="flex flex-col items-start gap-6 w-40">
             {files.map((file, index) => (
