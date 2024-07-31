@@ -15,13 +15,13 @@ const Chat = ({ id }) => {
   }, [id]);
 
   return (
-    <div className="bg-gray-100 w-full max-h-full p-4 rounded-lg shadow-md">
+    <div className="bg-gray-100 w-full p-4 rounded-lg shadow-md">
       <div className="overflow-y-scroll chatbox-container pr-4 flex flex-col items-start">
         {chat.map((c) => (
           <div
             key={c.id}
             className={`mb-4 p-2 px-4 rounded-lg w-60 ${
-              c.sender_id === id
+              c.sender_id == id
                 ? "bg-cyan-200 text-black font-semibold self-end"
                 : "bg-white text-black font-semibold"
             }`}

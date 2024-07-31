@@ -35,7 +35,7 @@ const SearchBox = () => {
   return (
     <div className="relative" ref={wrapperRef}>
       <input
-        className="p-3 px-8 border-0 w-96 h-11 rounded-full bg-gray-200 text-black focus:outline-none focus:ring-2 focus:ring-blue-300"
+        className="p-3 px-8 border-0 w-96 h-11 rounded-full bg-gray-200 text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-300"
         type="text"
         placeholder="Search"
         value={value}
@@ -47,17 +47,18 @@ const SearchBox = () => {
         }}
       />
       {isOpen && results.length > 0 && (
-        <div className="absolute mt-2 w-full text-black bg-white rounded-md shadow-lg max-h-60 overflow-auto z-10 flex flex-col gap-2">
+        <div className="absolute mt-2 w-full bg-white rounded-md shadow-lg max-h-80 overflow-auto z-10 flex flex-col">
           {results.map((result, index) => (
-            <div
+            <Link
+              to={`/user/${result.id}`}
               key={index}
-              className="border-b border-gray-300 px-4 py-2 pl-4 hover:bg-gray-200 cursor-pointer"
+              className="border-b border-gray-300 px-4 py-2 pl-4 h-20 hover:bg-gray-200 cursor-pointer text-xl text-gray-700 font-medium"
               onClick={() => {
                 setIsOpen(false);
               }}
             >
-              <Link to={`/user/${result.id}`}>{result.name}</Link>
-            </div>
+              {result.name}
+            </Link>
           ))}
         </div>
       )}

@@ -21,7 +21,7 @@ const Profile = ({ user, conversations }) => {
   }, [conversations]);
 
   return (
-    <div className="container flex w-full mx-auto p-4 justify-between">
+    <div className="container flex w-full mx-auto p-4 px-32 justify-between">
       <div className="w-80">
         <h1 className="text-3xl font-bold mb-4">Profile</h1>
         <div className="mb-4">
