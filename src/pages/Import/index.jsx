@@ -22,11 +22,10 @@ const BulkImport = () => {
 
     try {
       const result = await sendFile(file);
-      setMessage("File uploaded successfully!");
-      console.log(result);
+      setMessage("Users imported successfully!");
     } catch (error) {
       setMessage("Error uploading file. Please try again.");
-      console.error(error);
+      console.error(error.response.data);
     } finally {
       setIsLoading(false);
     }
