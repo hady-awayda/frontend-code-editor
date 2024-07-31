@@ -8,7 +8,6 @@ import Profile from "../../pages/Profile";
 import Register from "../../pages/Register";
 import Navbar from "../../components/Structural/Navbar";
 import Footer from "../../components/Structural/Footer";
-import useAuth from "../../components/hooks/useAuth";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 

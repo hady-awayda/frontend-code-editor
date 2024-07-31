@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import fetchUserMessages from "../../../data/remote/messages/data";
+import fetchUserMessages from "../../../data/remote/messages/read";
 
 const Chat = ({ id }) => {
   const [chat, setChat] = useState([]);

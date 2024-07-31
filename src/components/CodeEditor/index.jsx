@@ -5,7 +5,7 @@ import { CODE_SNIPPETS } from "./constants";
 import Output from "./Output";
 import "./style.css";
 import Files from "../Cards/Files";
-import fetchSourceCodes from "../../data/remote/source_codes/data";
+import fetchSourceCodes from "../../data/remote/source_codes/read";
 import updateFile from "../../data/remote/source_codes/update";
 import createFile from "../../data/remote/source_codes/create";
 

@@ -4,9 +4,9 @@ import { Provider } from "react-redux";
 import store from "./data/redux/store";
 import Body from "./components/Body/Body";
 import { useEffect, useState } from "react";
-import fetchUserData from "./data/remote/user/data";
-import fetchUserConversations from "./data/remote/conversations/data";
-import fetchSourceCodes from "./data/remote/source_codes/data";
+import fetchUserData from "./data/remote/user/read";
+import fetchUserConversations from "./data/remote/conversations/read";
+import fetchSourceCodes from "./data/remote/source_codes/read";
 
 function App() {
   const [user, setUser] = useState([]);
