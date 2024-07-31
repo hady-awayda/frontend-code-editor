@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import "./style.css";
-import { executeCode } from "../../api";
+import { executeCode } from "../api";
 
 const Output = ({ editorRef, language }) => {
   const [output, setOutput] = useState(null);

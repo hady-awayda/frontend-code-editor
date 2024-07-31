@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { Box, HStack } from "@chakra-ui/react";
 import { Editor } from "@monaco-editor/react";
-import { CODE_SNIPPETS } from "../../constants";
-import Output from "../Output";
+import { CODE_SNIPPETS } from "./constants";
+import Output from "./Output";
 import "./style.css";
-import fetchSourceCodes from "../../data/remote/source_codes/data";
 import Files from "../Cards/Files";
+import fetchSourceCodes from "../../data/remote/source_codes/data";
 import updateFile from "../../data/remote/source_codes/update";
 import createFile from "../../data/remote/source_codes/create";
 
