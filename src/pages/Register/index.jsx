@@ -1,31 +1,28 @@
 import { useState } from "react";
 import "./style.css";
+import register from "../../data/remote/auth/register";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle registration logic here
-    console.log(
-      "Name:",
-      name,
-      "Email:",
-      email,
-      "Password:",
-      password,
-      "Role:",
-      role
-    );
+
+    try {
+      await register(name, email, password);
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
     <div className="register-container">
       <div className="register-form">
         <h2>Register</h2>
+        {error && <p className="text-red-500 mb-4">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">Name</label>
@@ -59,19 +56,6 @@ const Register = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
-          </div>
-          <div className="form-group">
-            <label htmlFor="role">Role</label>
-            <select
-              id="role"
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-              required
-            >
-              <option value="">Select Role</option>
-              <option value="user">User</option>
-              <option value="admin">Admin</option>
-            </select>
           </div>
           <button type="submit" className="register-button">
             Register

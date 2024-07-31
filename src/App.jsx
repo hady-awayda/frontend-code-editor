@@ -1,32 +1,46 @@
 import "./App.css";
 
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Profile from "./pages/Profile";
-import Editorr from "./pages/Editor";
-import Admin from "./pages/Admin";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./data/redux/store";
+import Body from "./components/Body/Body";
+import { useEffect, useState } from "react";
+import fetchUserData from "./data/remote/user/data";
+import fetchUserConversations from "./data/remote/conversations/data";
+import fetchSourceCodes from "./data/remote/source_codes/data";
 
 function App() {
+  const [user, setUser] = useState([]);
+  const [conversations, setConversations] = useState([]);
+  const [sourceCodes, setSourceCodes] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const users = await fetchUserData();
+
+      setUser(users);
+    }
+
+    async function fetchConversations() {
+      const conversations = await fetchUserConversations();
+
+      setConversations(conversations);
+    }
+
+    async function fetchUserCodes() {
+      const sourceCodes = await fetchSourceCodes();
+
+      setSourceCodes(sourceCodes);
+    }
+
+    fetchData();
+    fetchConversations();
+    fetchUserCodes();
+  }, []);
+
   return (
-    <Router>
-      <Navbar />
-      <div className="main-content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/editor" element={<Editorr />} />
-          <Route path="/admin" element={<Admin />} />
-        </Routes>
-      </div>
-      <Footer />
-    </Router>
+    <Provider store={store}>
+      <Body {...{ user, conversations, sourceCodes }} />
+    </Provider>
   );
 }
 

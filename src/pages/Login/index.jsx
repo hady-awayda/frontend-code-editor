@@ -1,20 +1,26 @@
 import { useState } from "react";
 import "./style.css";
+import login from "../../data/remote/auth/login";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-   
-    console.log("Email:", email, "Password:", password);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await login(email, password);
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
     <div className="login-container">
       <div className="login-form">
         <h2>Login</h2>
+        {error && <p className="text-red-500 mb-4">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">Email</label>

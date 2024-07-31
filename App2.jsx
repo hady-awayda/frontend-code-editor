@@ -30,11 +30,11 @@ const UserProfile = () => {
   );
 };
 
-const App = () => (
+const App2 = () => (
   <AuthProvider>
     <LoginComponent />
     <UserProfile />
   </AuthProvider>
 );
 
-export default App;
+export default App2;
