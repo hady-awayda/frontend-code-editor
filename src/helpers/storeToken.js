@@ -12,7 +12,7 @@ function storeToken(data) {
     if (decodedToken) {
       const tokenObject = {
         token: data.token,
-        userData: decodedToken,
+        data: decodedToken,
       };
 
       // dispatch(setToken(tokenObject));

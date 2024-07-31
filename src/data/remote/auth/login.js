@@ -1,7 +1,5 @@
-import axios from "axios";
+import axios from "../../../config/axiosConfig";
 import storeToken from "../../../helpers/storeToken";
-
-axios.defaults.baseURL = import.meta.env.VITE_APP_DEPLOYMENT_BASE_URL;
 
 const login = async (email, password) => {
   try {
