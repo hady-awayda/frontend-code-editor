@@ -1,12 +1,12 @@
 import "./style.css";
-
 import Home from "../../pages/Home";
 import Login from "../../pages/Login";
 import Admin from "../../pages/Admin";
 import Editor from "../../pages/Editor";
-import Profile from "../../pages/Profile";
 import UserPage from "../../pages/User";
+import Profile from "../../pages/Profile";
 import Register from "../../pages/Register";
+import Import from "../../pages/Import";
 import Navbar from "../../components/Structural/Navbar";
 import Footer from "../../components/Structural/Footer";
 
@@ -27,6 +27,7 @@ const Body = ({ user, conversations, sourceCodes }) => {
         <Route path="/editor" element={<Editor {...{ sourceCodes }} />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/user/:id" element={<UserPage />} />
+        <Route path="/import" element={<Import />} />
       </Routes>
       <Footer />
     </Router>
