@@ -1,12 +1,6 @@
-/* .navbar {
-<<<<<<<< HEAD:src/components/Navbar/style.css
+.navbar {
   background-color: #181a1e;
   color: #61dafb;
-========
-  background-color: #282c34;
-  font-size: 1.1rem;
-  color: #fff;
->>>>>>>> bc386f7dc9ca266cafa7e5eaa820ab0da31f8232:src/components/Structural/Navbar/style.css
   padding: 1rem;
   display: flex;
   justify-content: center;
@@ -20,16 +14,15 @@
   align-items: center;
   width: 100%;
   max-width: 1200px;
-  height: 40px;
 }
 
 .links {
   display: flex;
-  gap: 2.75rem;
+  gap: 1rem;
 }
 
 /* .links a {
-  color: #cef4ff;
+  color: #61dafb;
   text-decoration: none;
   transition: color 0.3s;
 } */
