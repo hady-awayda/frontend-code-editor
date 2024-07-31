@@ -1,7 +1,7 @@
 import { useState } from "react";
-import PropTypes from "prop-types"; 
-import "./style.css"; 
-import { executeCode } from "../../api"; 
+import PropTypes from "prop-types";
+import "./style.css";
+import { executeCode } from "../../api";
 
 const Output = ({ editorRef, language }) => {
   const [output, setOutput] = useState(null);
@@ -26,7 +26,6 @@ const Output = ({ editorRef, language }) => {
 
   return (
     <div className="output-container">
-      <h3>Output</h3>
       <button
         className={`run-button ${isLoading ? "loading" : ""}`}
         onClick={runCode}

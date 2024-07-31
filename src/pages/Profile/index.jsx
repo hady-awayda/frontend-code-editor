@@ -1,7 +1,7 @@
 import "./style.css";
 import Conversation from "../../components/Cards/Conversation";
 import Chat from "../../components/Cards/Chat";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Profile = ({ user, conversations }) => {
   const [id, setId] = useState(null);

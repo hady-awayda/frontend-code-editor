@@ -8,7 +8,6 @@ const Chat = ({ id }) => {
     const fetchChat = async () => {
       const chat = await fetchUserMessages(id);
       setChat(chat);
-      console.log(chat);
     };
 
     fetchChat();
