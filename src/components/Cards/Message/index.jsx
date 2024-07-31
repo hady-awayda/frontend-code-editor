@@ -2,7 +2,6 @@ import { useState } from "react";
 import send from "../../../data/remote/messages/create";
 
 const Input = ({ id }) => {
-  console.log(id);
   const [text, setText] = useState("");
 
   const sendMessage = () => {

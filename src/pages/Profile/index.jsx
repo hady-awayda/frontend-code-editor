@@ -1,17 +1,24 @@
 import "./style.css";
 import Conversation from "../../components/Cards/Conversation";
 import Chat from "../../components/Cards/Chat";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Input from "../../components/Cards/Message/index";
 
 const Profile = ({ user, conversations }) => {
-  const [id, setId] = useState(null);
-  const [name, setName] = useState("John Doe");
+  const [id, setId] = useState(conversations[0]?.id);
+  const [name, setName] = useState(conversations[0]?.name || "John Doe");
 
   const onConversationChange = (id, name) => {
     setId(id);
     setName(name);
   };
+
+  useEffect(() => {
+    if (conversations.length > 0) {
+      setId(conversations[0].id);
+      setName(conversations[0].name);
+    }
+  }, [conversations]);
 
   return (
     <div className="container flex w-full mx-auto p-4 justify-between">
@@ -27,15 +34,12 @@ const Profile = ({ user, conversations }) => {
         </div>
         <h2 className="text-3xl font-bold mb-2">Conversations</h2>
         <div className="mt-4 w-full pr-4 gap-1 flex flex-col">
-          {conversations.map((convo) => {
-            console.log(convo);
-            return (
-              <Conversation
-                key={convo.id}
-                {...{ ...convo, onConversationChange }}
-              />
-            );
-          })}
+          {conversations.map((convo) => (
+            <Conversation
+              key={convo.id}
+              {...{ ...convo, onConversationChange }}
+            />
+          ))}
         </div>
       </div>
       <div className="w-full ml-32 mt-4 h-full flex flex-col items-center">
