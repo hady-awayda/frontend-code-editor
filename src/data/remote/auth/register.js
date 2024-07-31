@@ -11,7 +11,6 @@ const register = async (name, email, password) => {
 
     storeToken(data.authorization);
   } catch (error) {
-    console.log(error);
     throw new Error("Invalid email or password");
   }
 };

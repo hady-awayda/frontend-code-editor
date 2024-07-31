@@ -25,8 +25,11 @@ const Profile = ({ user, conversations }) => {
         <div className="w-1/3 pr-4">
           <h2 className="text-xl font-semibold mb-2">Conversations:</h2>
           <div className="">
-            {conversations.map((c) => (
-              <Conversation key={c.id} {...{ ...c, onConversationChange }} />
+            {conversations.map((convo) => (
+              <Conversation
+                key={convo.id}
+                {...{ ...convo, onConversationChange }}
+              />
             ))}
           </div>
         </div>
