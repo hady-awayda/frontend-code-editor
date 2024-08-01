@@ -7,8 +7,8 @@ const Home = () => {
         <h1>Welcome to Our Interactive Code Editor</h1>
         <p>
           Explore the features of our platform and enhance your coding
-          experience. Whether you are a beginner or an expert, we have something
-          for everyone.
+          experience. Whether you are a beginner or an expert, you can enhance
+          your Python skills in our code editor and connect with other devs!
         </p>
         <div className="home-buttons">
           <button
@@ -19,7 +19,7 @@ const Home = () => {
           </button>
           <button
             className="home-button"
-            onClick={() => (window.location.href = "/connect")}
+            onClick={() => (window.location.href = "/profile")}
           >
             Connect with Other Devs
           </button>
