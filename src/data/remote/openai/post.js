@@ -2,6 +2,7 @@ import axios from "axios";
 import debounce from "../../../utils/helpers/debounce";
 
 const fetchSuggestions = async (text) => {
+  console.log(import.meta.env.VITE_APP_DEPLOYMENT_BASE_URL);
   text =
     "In a single block of code, without adding comments or explanations or quotations, write the following code: " +
     text;
