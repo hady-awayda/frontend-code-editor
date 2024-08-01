@@ -1,11 +1,12 @@
 .footer {
-  /* background-color: #181a1e;
-  color: #61dafb; */
-  background-color: #282c34;
-  color: #eafbff;
+  background-color: #181a1e;
+  color: #61dafb;
   padding: 1rem;
   text-align: center;
   width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 
 .footer-content {
