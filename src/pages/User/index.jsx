@@ -10,7 +10,7 @@ const UserPage = () => {
   const [user, setUser] = useState(null);
   const [refresh, setRefresh] = useState(false);
 
-  const onMessageSend = (message) => {
+  const onMessageSend = () => {
     setRefresh((prev) => !prev);
   };
 
