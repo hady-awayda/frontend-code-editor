@@ -10,10 +10,15 @@ const Profile = () => {
   const conversations = useSelector((state) => state.data.conversations);
   const [id, setId] = useState(conversations[0]?.id);
   const [name, setName] = useState(conversations[0]?.name || "John Doe");
+  const [refresh, setRefresh] = useState(false);
 
   const onConversationChange = (id, name) => {
     setId(id);
     setName(name);
+  };
+
+  const onMessageSend = (message) => {
+    setRefresh((prev) => !prev);
   };
 
   useEffect(() => {
@@ -47,8 +52,8 @@ const Profile = () => {
       </div>
       <div className="w-full ml-32 mt-4 h-full flex flex-col items-center">
         <h2 className="text-3xl font-bold mb-10">{name}</h2>
-        <Chat {...{ id }} />
-        <Input {...{ id }} />
+        <Chat {...{ id, refresh }} />
+        <Input {...{ id, onMessageSend }} />
       </div>
     </div>
   );

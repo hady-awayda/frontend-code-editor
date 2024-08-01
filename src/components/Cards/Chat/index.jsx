@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import fetchUserMessages from "../../../data/remote/messages/read";
 
-const Chat = ({ id }) => {
+const Chat = ({ id, refresh }) => {
   const [chat, setChat] = useState([]);
 
+  const fetchChat = async () => {
+    const chat = await fetchUserMessages(id);
+
+    setChat(chat);
+  };
+
   useEffect(() => {
-    const fetchChat = async () => {
-      const chat = await fetchUserMessages(id);
-
-      setChat(chat);
-    };
-
     fetchChat();
-  }, [id]);
+  }, [id, refresh]);
 
   return (
     <div className="bg-gray-100 w-full p-4 rounded-lg shadow-md">

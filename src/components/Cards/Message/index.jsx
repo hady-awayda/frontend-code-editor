@@ -1,13 +1,13 @@
 import { useState } from "react";
 import send from "../../../data/remote/messages/create";
 
-const Input = ({ id }) => {
+const Input = ({ id, onMessageSend }) => {
   const [text, setText] = useState("");
 
-  const sendMessage = () => {
-    send(id, text);
-
+  const sendMessage = async () => {
+    await send(id, text);
     setText("");
+    onMessageSend();
   };
 
   return (
