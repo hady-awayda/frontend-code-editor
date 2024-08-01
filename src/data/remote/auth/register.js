@@ -3,7 +3,7 @@ import storeToken from "../../../utils/helpers/storeToken";
 
 const register = async (name, email, password) => {
   try {
-    const { data } = await axios.post("auth/register", {
+    const { data } = await axios.post("/auth/register", {
       name,
       email,
       password,
