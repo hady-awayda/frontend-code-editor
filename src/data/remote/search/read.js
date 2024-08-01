@@ -1,7 +1,7 @@
 import axios from "../../../config/axiosConfig";
 
 const search = async (username) => {
-  const { token } = JSON.parse(localStorage.getItem("jwtData"));
+  const { token } = JSON.parse(localStorage.getItem("jwtData")) || {};
 
   try {
     const { data } = await axios.get(`/search/${username}`, {

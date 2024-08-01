@@ -1,7 +1,7 @@
 import axios from "../../../config/axiosConfig";
 
 const sendMessage = async (user_id_2, message) => {
-  const { token, data } = JSON.parse(localStorage.getItem("jwtData"));
+  const { token, data } = JSON.parse(localStorage.getItem("jwtData")) || {};
 
   try {
     const res = await axios.post(

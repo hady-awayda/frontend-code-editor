@@ -11,7 +11,7 @@ function decodeJwtToken(token) {
         .join("")
     );
 
-    return JSON.parse(jsonPayload);
+    return JSON.parse(jsonPayload) || {};
   } catch (error) {
     console.error("Error decoding JWT token:", error);
     return null;

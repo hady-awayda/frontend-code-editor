@@ -1,7 +1,7 @@
 import axios from "../../../config/axiosConfig";
 
 const fetchUserData = async () => {
-  const { token, data } = JSON.parse(localStorage.getItem("jwtData"));
+  const { token, data } = JSON.parse(localStorage.getItem("jwtData")) || {};
 
   try {
     const res = await axios.get(`/users/${data.user_id}`, {

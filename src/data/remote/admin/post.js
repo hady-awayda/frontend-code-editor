@@ -1,7 +1,7 @@
 import axios from "../../../config/axiosConfig";
 
 const sendFile = async (file) => {
-  const { token } = JSON.parse(localStorage.getItem("jwtData"));
+  const { token } = JSON.parse(localStorage.getItem("jwtData")) || {};
 
   const formData = new FormData();
   formData.append("file", file);

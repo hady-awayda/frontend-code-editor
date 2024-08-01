@@ -10,7 +10,7 @@ const Navbar = () => {
   const [name, setName] = useState(null);
 
   useEffect(() => {
-    const storage = JSON.parse(localStorage.getItem("jwtData"));
+    const storage = JSON.parse(localStorage.getItem("jwtData")) || {};
     const data = storage?.data;
 
     setRole(data?.role);
