@@ -18,9 +18,7 @@ const fetchSuggestions = async (text) => {
       {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${
-            import.meta.env.VITE_APP_DEPLOYMENT_OPENAI_KEY
-          }`,
+          Authorization: `Bearer sk-proj-7AZav3neMsvGt3gQ98zsT3BlbkFJRPWlTMliWsGKCewqTnt3`,
         },
       }
     );
