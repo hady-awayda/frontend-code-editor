@@ -5,9 +5,9 @@ const Files = ({ id, title, onFileChange, index, isSelected }) => {
   return (
     <button
       onClick={handleChange}
-      className={`p-2 w-full text-left font-semibold px-4 ${
-        isSelected ? "bg-blue-500 text-white" : "bg-gray-200 text-black"
-      } rounded-lg`}
+      className={`p-2 w-10/12 text-left font-semibold px-4 rounded-r-full ${
+        isSelected ? "bg-cyan-800 text-white" : "bg-gray-200 text-black"
+      }`}
     >
       {title}
     </button>

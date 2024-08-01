@@ -1,22 +1,24 @@
-import { useEffect, useRef, useState } from "react";
-import { Box, HStack } from "@chakra-ui/react";
-import { Editor } from "@monaco-editor/react";
-import { CODE_SNIPPETS } from "./constants";
-import Output from "./Output";
 import "./style.css";
+import Output from "./Output";
 import Files from "../Cards/Files";
-import fetchSourceCodes from "../../data/remote/source_codes/read";
-import updateFile from "../../data/remote/source_codes/update";
-import createFile from "../../data/remote/source_codes/create";
+import { CODE_SNIPPETS } from "./constants";
+import { Editor } from "@monaco-editor/react";
+import { Box, HStack } from "@chakra-ui/react";
+import { useEffect, useRef, useState } from "react";
+import downloadFile from "../../utils/downloadFile";
 import downloadAllData from "../../utils/downloadAllData";
+import createFile from "../../data/remote/source_codes/create";
+import updateFile from "../../data/remote/source_codes/update";
+import fetchSourceCodes from "../../data/remote/source_codes/read";
 
 const CodeEditor = ({ sourceCodes }) => {
   const editorRef = useRef(null);
   const [value, setValue] = useState("");
   const [files, setFiles] = useState([]);
-  const [title, setTitle] = useState("Python");
-  const [selectedFile, setSelectedFile] = useState(0);
+  const [title, setTitle] = useState("main.py");
+  const [selectedFileId, setSelectedFileId] = useState(0);
   const [language, setLanguage] = useState("python");
+  const [index, setIndex] = useState(0);
 
   const onMount = (editor) => {
     editorRef.current = editor;
@@ -41,12 +43,13 @@ const CodeEditor = ({ sourceCodes }) => {
   }, []);
 
   const onFileChange = (id) => {
+    setIndex(id);
     setValue(files[id].code);
-    setSelectedFile(files[id].id);
+    setSelectedFileId(files[id].id);
   };
 
   const handleCodeSave = async () => {
-    updateFile(selectedFile, value);
+    updateFile(selectedFileId, value);
     fetchCodes();
   };
 
@@ -55,23 +58,30 @@ const CodeEditor = ({ sourceCodes }) => {
     fetchCodes();
   };
 
+  const handleFileDownload = () => {
+    downloadFile(files[index].title, files[index].code);
+  };
+
   return (
     <Box>
       <HStack spacing={4}>
         <div className=" text-white flex justify-start flex-col items-start gap-8 files-container w-72">
-          <h1 className="text-3xl font-bold text-gray-200">Files</h1>
-          <div className="flex flex-col items-start gap-6 w-40">
+          <h1 className="text-4xl font-bold text-gray-200">Files</h1>
+          <div className="flex flex-col items-start gap-2 w-56 overflow-y-scroll h-full">
             {files.map((file, index) => (
               <Files
                 key={file.id}
                 {...{ ...file, onFileChange, index }}
-                isSelected={selectedFile === file.id}
+                isSelected={selectedFileId === file.id}
               />
             ))}
           </div>
+          <h1 className="text-4xl font-bold text-gray-200">Add File</h1>
           <input
-            className="p-2 px-8 border-0 rounded-full bg-gray-200 text-black w-40"
+            className="p-2 px-8 border-0 rounded-r-full bg-gray-200 text-black w-40"
             type="text"
+            placeholder="File Name"
+            value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <button
@@ -90,7 +100,7 @@ const CodeEditor = ({ sourceCodes }) => {
               Upload & Save
             </button>
             <button
-              onClick={() => downloadFile(files[selectedFile])}
+              onClick={handleFileDownload}
               className="run-button action-buttons"
             >
               Download File
