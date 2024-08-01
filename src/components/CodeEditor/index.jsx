@@ -7,6 +7,7 @@ import { Box, HStack } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import downloadFile from "../../utils/downloadFile";
 import downloadAllData from "../../utils/downloadAllData";
+import fetchSuggestions from "../../data/remote/openai/post";
 import createFile from "../../data/remote/source_codes/create";
 import updateFile from "../../data/remote/source_codes/update";
 import fetchSourceCodes from "../../data/remote/source_codes/read";
@@ -52,25 +53,6 @@ const CodeEditor = ({ sourceCodes }) => {
     });
   };
 
-  const fetchSuggestions = async (text) => {
-    const response = await fetch(
-      "https://api.openai.com/v1/engines/davinci-codex/completions",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${VITE_APP_DEPLOYEMENT_OPENAI_KEY}`,
-        },
-        body: JSON.stringify({
-          prompt: text,
-          max_tokens: 50,
-        }),
-      }
-    );
-    const data = await response.json();
-    return data.suggestions;
-  };
-
   const fetchCodes = async () => {
     const data = await fetchSourceCodes();
     setFiles(data);
@@ -95,12 +77,12 @@ const CodeEditor = ({ sourceCodes }) => {
   };
 
   const handleCodeSave = async () => {
-    updateFile(selectedFileId, value);
+    await updateFile(selectedFileId, value);
     fetchCodes();
   };
 
   const addFile = async () => {
-    createFile(title, value);
+    await createFile(title, value);
     fetchCodes();
   };
 
