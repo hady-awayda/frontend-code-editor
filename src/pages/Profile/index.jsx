@@ -1,10 +1,13 @@
 import "./style.css";
-import Conversation from "../../components/Cards/Conversation";
-import Chat from "../../components/Cards/Chat";
+import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import Chat from "../../components/Cards/Chat";
 import Input from "../../components/Cards/Message/index";
+import Conversation from "../../components/Cards/Conversation";
 
-const Profile = ({ user, conversations }) => {
+const Profile = () => {
+  const user = useSelector((state) => state.data.user);
+  const conversations = useSelector((state) => state.data.conversations);
   const [id, setId] = useState(conversations[0]?.id);
   const [name, setName] = useState(conversations[0]?.name || "John Doe");
 

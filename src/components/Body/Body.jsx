@@ -22,10 +22,7 @@ const Body = ({ user, conversations, sourceCodes }) => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route
-          path="/profile"
-          element={<Profile {...{ user, conversations }} />}
-        />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/editor" element={<Editor />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/user/:id" element={<UserPage />} />
