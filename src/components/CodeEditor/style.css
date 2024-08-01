@@ -63,3 +63,8 @@ h3 {
 .files-container {
   height: 600px;
 }
+
+.action-buttons {
+  margin-bottom: -5px;
+  margin-top: 10px;
+}

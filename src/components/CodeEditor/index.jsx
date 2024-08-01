@@ -8,6 +8,7 @@ import Files from "../Cards/Files";
 import fetchSourceCodes from "../../data/remote/source_codes/read";
 import updateFile from "../../data/remote/source_codes/update";
 import createFile from "../../data/remote/source_codes/create";
+import downloadAllData from "../../utils/downloadAllData";
 
 const CodeEditor = ({ sourceCodes }) => {
   const editorRef = useRef(null);
@@ -61,7 +62,11 @@ const CodeEditor = ({ sourceCodes }) => {
           <h1 className="text-3xl font-bold text-gray-200">Files</h1>
           <div className="flex flex-col items-start gap-6 w-40">
             {files.map((file, index) => (
-              <Files key={file.id} {...{ ...file, onFileChange, index }} />
+              <Files
+                key={file.id}
+                {...{ ...file, onFileChange, index }}
+                isSelected={selectedFile === file.id}
+              />
             ))}
           </div>
           <input
@@ -77,9 +82,26 @@ const CodeEditor = ({ sourceCodes }) => {
           </button>
         </div>
         <Box w="500px">
-          <button onClick={handleCodeSave} className="run-button">
-            Save
-          </button>
+          <div className="flex justify-between">
+            <button
+              onClick={handleCodeSave}
+              className="run-button action-buttons"
+            >
+              Upload & Save
+            </button>
+            <button
+              onClick={() => downloadFile(files[selectedFile])}
+              className="run-button action-buttons"
+            >
+              Download File
+            </button>
+            <button
+              onClick={() => downloadAllData(files)}
+              className="run-button action-buttons"
+            >
+              Download All Files
+            </button>
+          </div>
           <Editor
             options={{
               minimap: {
