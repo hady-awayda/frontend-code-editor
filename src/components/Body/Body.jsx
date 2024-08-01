@@ -4,15 +4,17 @@ import Login from "../../pages/Login";
 import Admin from "../../pages/Admin";
 import Editor from "../../pages/Editor";
 import UserPage from "../../pages/User";
+import Import from "../../pages/Import";
 import Profile from "../../pages/Profile";
 import Register from "../../pages/Register";
-import Import from "../../pages/Import";
 import Navbar from "../../components/Structural/Navbar";
 import Footer from "../../components/Structural/Footer";
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import useInitializeData from "../../hooks/useInitializeData";
 
 const Body = ({ user, conversations, sourceCodes }) => {
+  useInitializeData(user, conversations, sourceCodes);
+
   return (
     <Router>
       <Navbar />
@@ -24,7 +26,7 @@ const Body = ({ user, conversations, sourceCodes }) => {
           path="/profile"
           element={<Profile {...{ user, conversations }} />}
         />
-        <Route path="/editor" element={<Editor {...{ sourceCodes }} />} />
+        <Route path="/editor" element={<Editor />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/user/:id" element={<UserPage />} />
         <Route path="/import" element={<Import />} />

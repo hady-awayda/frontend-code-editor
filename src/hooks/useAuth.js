@@ -1,7 +1,7 @@
 // src/hooks/useAuth.js
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setToken, setUserData } from "../../data/redux/authSlice/slice";
+import { setToken, setUserData } from "../data/redux/authSlice/slice";
 import fetchUserData from "../../data/remote/user/data";
 
 const useAuth = () => {
