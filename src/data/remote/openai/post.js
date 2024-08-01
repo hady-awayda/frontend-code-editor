@@ -1,11 +1,17 @@
 import axios from "axios";
+import debounce from "../../../utils/helpers/debounce";
 
 const fetchSuggestions = async (text) => {
+  text =
+    "In a single block of code, without adding comments or explanations or quotations, write the following code: " +
+    text;
+  console.log(text);
+
   try {
     const response = await axios.post(
       "https://api.openai.com/v1/chat/completions",
       {
-        model: "gpt-3.5-turbo",
+        model: "gpt-4o",
         messages: [{ role: "user", content: text }],
         temperature: 0.7,
       },
@@ -25,5 +31,7 @@ const fetchSuggestions = async (text) => {
     return [];
   }
 };
+
+// const debouncedFetchSuggestions = debounce(fetchSuggestions, 2000);
 
 export default fetchSuggestions;

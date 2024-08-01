@@ -27,11 +27,16 @@ const CodeEditor = ({ sourceCodes }) => {
 
     monaco.languages.registerCompletionItemProvider("python", {
       provideCompletionItems: async (model, position) => {
+        const startLineNumber = Math.max(1, position.lineNumber - 5);
+        const endLineNumber = position.lineNumber;
+        const startColumn = 1;
+        const endColumn = position.column;
+
         const text = model.getValueInRange({
-          startLineNumber: position.lineNumber,
-          startColumn: position.column - 1,
-          endLineNumber: position.lineNumber,
-          endColumn: position.column,
+          startLineNumber,
+          startColumn,
+          endLineNumber,
+          endColumn,
         });
 
         const suggestions = await fetchSuggestions(text);
@@ -51,6 +56,38 @@ const CodeEditor = ({ sourceCodes }) => {
         };
       },
     });
+
+    // Add event listener for Ctrl + Enter
+    editor.addCommand(
+      monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter,
+      async () => {
+        const model = editor.getModel();
+        const position = editor.getPosition();
+        const text = model.getValueInRange({
+          startLineNumber: Math.max(1, position.lineNumber - 5),
+          startColumn: 1,
+          endLineNumber: position.lineNumber,
+          endColumn: position.column,
+        });
+
+        const suggestions = await fetchSuggestions(text);
+        if (suggestions.length > 0) {
+          const suggestion = suggestions[0]; // Use the first suggestion or implement logic to choose
+          editor.executeEdits("", [
+            {
+              range: new monaco.Range(
+                position.lineNumber,
+                position.column,
+                position.lineNumber,
+                position.column
+              ),
+              text: suggestion,
+              forceMoveMarkers: true,
+            },
+          ]);
+        }
+      }
+    );
   };
 
   const fetchCodes = async () => {
@@ -93,7 +130,7 @@ const CodeEditor = ({ sourceCodes }) => {
   return (
     <Box>
       <HStack spacing={4}>
-        <div className=" text-white flex justify-start flex-col items-start gap-8 files-container w-72">
+        <div className="text-white flex justify-start flex-col items-start gap-8 files-container w-72">
           <h1 className="text-4xl font-bold text-gray-200">Files</h1>
           <div className="flex flex-col items-start gap-2 w-56 overflow-y-scroll h-full">
             {files.map((file, index) => (
@@ -161,4 +198,5 @@ const CodeEditor = ({ sourceCodes }) => {
     </Box>
   );
 };
+
 export default CodeEditor;
