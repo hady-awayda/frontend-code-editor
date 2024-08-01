@@ -23,7 +23,10 @@ const Register = () => {
       <div className="register-form">
         <h2>Register</h2>
         {error && <p className="text-red-500 mb-4">{error}</p>}
-        <form onSubmit={handleSubmit}>
+        <form
+          className="flex flex-col justify-center items-center"
+          onSubmit={handleSubmit}
+        >
           <div className="form-group">
             <label htmlFor="name">Name</label>
             <input
