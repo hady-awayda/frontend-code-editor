@@ -10,6 +10,7 @@ const login = async (email, password) => {
 
     storeToken(data.authorization);
   } catch (error) {
+    console.log(error.response.data);
     throw new Error(error.response.data.message || "Login failed");
   }
 };

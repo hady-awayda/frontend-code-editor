@@ -1,31 +1,36 @@
 import decodeJwtToken from "./decodeJWT";
 // import { useDispatch } from "react-redux";
-// import { setToken } from "../data/redux/actions/authActions";
+// import { setToken } from "../../data/redux/authSlice/slice";
 
 function storeToken(data) {
+  // console.log(data.token);
   // const dispatch = useDispatch();
 
-  if (data.token) {
-    const decodedToken = decodeJwtToken(data.token);
+  try {
+    if (data.token) {
+      const decodedToken = decodeJwtToken(data.token);
 
-    if (decodedToken) {
-      const tokenObject = {
-        token: data.token,
-        data: decodedToken,
-      };
+      if (decodedToken) {
+        const tokenObject = {
+          token: data.token,
+          data: decodedToken,
+        };
 
-      // dispatch(setToken(tokenObject));
+        // dispatch(setToken(tokenObject));
 
-      localStorage.setItem("jwtData", JSON.stringify(tokenObject));
+        localStorage.setItem("jwtData", JSON.stringify(tokenObject));
 
-      decodedToken.role === "admin"
-        ? (window.location.href = "/admin")
-        : (window.location.href = "/");
+        decodedToken.role === "admin"
+          ? (window.location.href = "/admin")
+          : (window.location.href = "/profile");
+      } else {
+        throw new Error("Invalid token structure");
+      }
     } else {
-      throw new Error("Invalid token structure");
+      throw new Error("No token received");
     }
-  } else {
-    throw new Error("No token received");
+  } catch (error) {
+    console.log(error);
   }
 }
 

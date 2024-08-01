@@ -1,16 +1,16 @@
 import "./style.css";
-import Home from "../../pages/Home";
-import Login from "../../pages/Login";
-import Admin from "../../pages/Admin";
-import Editor from "../../pages/Editor";
-import UserPage from "../../pages/User";
-import Import from "../../pages/Import";
-import Profile from "../../pages/Profile";
-import Register from "../../pages/Register";
-import Navbar from "../../components/Structural/Navbar";
-import Footer from "../../components/Structural/Footer";
+import Home from "../../../pages/Home";
+import Login from "../../../pages/Login";
+import Admin from "../../../pages/Admin";
+import Editor from "../../../pages/Editor";
+import UserPage from "../../../pages/User";
+import Import from "../../../pages/Import";
+import Profile from "../../../pages/Profile";
+import Register from "../../../pages/Register";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import useInitializeData from "../../hooks/useInitializeData";
+import useInitializeData from "../../../hooks/useInitializeData";
 
 const Body = ({ user, conversations, sourceCodes }) => {
   useInitializeData(user, conversations, sourceCodes);

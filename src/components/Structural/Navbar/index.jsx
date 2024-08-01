@@ -1,8 +1,12 @@
 import "./style.css";
 import Search from "../../Cards/SearchBox";
 import { Link } from "react-router-dom";
+// import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  // const user = useSelector((state) => state.auth.userData);
+  // console.log(user);
+
   return (
     <nav className="navbar">
       <div className="navbar-container">

@@ -52,7 +52,7 @@ const SearchBox = () => {
             <Link
               to={`/user/${result.id}`}
               key={index}
-              className="border-b border-gray-300 px-4 py-2 pl-4 h-20 hover:bg-gray-200 cursor-pointer text-xl text-gray-700 font-medium"
+              className="flex items-center border-b border-gray-300 px-4 py-2 pl-4 h-20 hover:border-none hover:bg-gray-900 cursor-pointer text-xl text-gray-700 font-medium"
               onClick={() => {
                 setIsOpen(false);
               }}
