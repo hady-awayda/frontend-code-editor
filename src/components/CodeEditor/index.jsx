@@ -24,7 +24,6 @@ const CodeEditor = ({ sourceCodes }) => {
     editorRef.current = editor;
     editor.focus();
 
-    // Register a simple completion item provider
     monaco.languages.registerCompletionItemProvider("python", {
       provideCompletionItems: async (model, position) => {
         const text = model.getValueInRange({
@@ -34,7 +33,6 @@ const CodeEditor = ({ sourceCodes }) => {
           endColumn: position.column,
         });
 
-        // Call AI suggestion service here
         const suggestions = await fetchSuggestions(text);
 
         return {
@@ -55,14 +53,20 @@ const CodeEditor = ({ sourceCodes }) => {
   };
 
   const fetchSuggestions = async (text) => {
-    // Replace with your API call to fetch suggestions
-    const response = await fetch("/api/suggestions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ text }),
-    });
+    const response = await fetch(
+      "https://api.openai.com/v1/engines/davinci-codex/completions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${VITE_APP_DEPLOYEMENT_OPENAI_KEY}`,
+        },
+        body: JSON.stringify({
+          prompt: text,
+          max_tokens: 50,
+        }),
+      }
+    );
     const data = await response.json();
     return data.suggestions;
   };
