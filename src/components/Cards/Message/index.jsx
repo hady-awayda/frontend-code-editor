@@ -4,9 +4,11 @@ import send from "../../../data/remote/messages/create";
 const Input = ({ id, onMessageSend }) => {
   const [text, setText] = useState("");
 
-  const sendMessage = async () => {
-    await send(id, text);
+  const sendMessage = () => {
+    send(id, text);
+
     setText("");
+
     onMessageSend();
   };
 

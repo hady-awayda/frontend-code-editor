@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import fetchUserMessages from "../../../data/remote/messages/read";
 
-const Chat = ({ id, refresh }) => {
+const Chat = ({ id, messages }) => {
   const [chat, setChat] = useState([]);
 
   const fetchChat = async () => {

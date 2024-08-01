@@ -8,6 +8,11 @@ import Input from "../../components/Cards/Message/index";
 const UserPage = () => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
+  const [messages, setMessages] = useState([]);
+
+  const onMessageSend = (message) => {
+    setMessages((prevMessages) => [...prevMessages, message]);
+  };
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -28,8 +33,8 @@ const UserPage = () => {
         </div>
       </div>
       <div className=" pl-4 w-8/12">
-        <Chat {...{ id }} />
-        <Input {...{ id }} />
+        <Chat {...{ id, refresh }} />
+        <Input {...{ id, onMessageSend }} />
       </div>
     </div>
   );
