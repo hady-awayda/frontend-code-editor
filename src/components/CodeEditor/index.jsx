@@ -20,9 +20,51 @@ const CodeEditor = ({ sourceCodes }) => {
   const [language, setLanguage] = useState("python");
   const [index, setIndex] = useState(0);
 
-  const onMount = (editor) => {
+  const onMount = (editor, monaco) => {
     editorRef.current = editor;
     editor.focus();
+
+    // Register a simple completion item provider
+    monaco.languages.registerCompletionItemProvider("python", {
+      provideCompletionItems: async (model, position) => {
+        const text = model.getValueInRange({
+          startLineNumber: position.lineNumber,
+          startColumn: position.column - 1,
+          endLineNumber: position.lineNumber,
+          endColumn: position.column,
+        });
+
+        // Call AI suggestion service here
+        const suggestions = await fetchSuggestions(text);
+
+        return {
+          suggestions: suggestions.map((suggestion, index) => ({
+            label: suggestion,
+            kind: monaco.languages.CompletionItemKind.Text,
+            insertText: suggestion,
+            range: {
+              startLineNumber: position.lineNumber,
+              startColumn: position.column - 1,
+              endLineNumber: position.lineNumber,
+              endColumn: position.column,
+            },
+          })),
+        };
+      },
+    });
+  };
+
+  const fetchSuggestions = async (text) => {
+    // Replace with your API call to fetch suggestions
+    const response = await fetch("/api/suggestions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ text }),
+    });
+    const data = await response.json();
+    return data.suggestions;
   };
 
   const fetchCodes = async () => {

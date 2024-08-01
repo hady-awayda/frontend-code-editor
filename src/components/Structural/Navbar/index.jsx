@@ -1,12 +1,28 @@
 import "./style.css";
-import Search from "../../Cards/SearchBox";
+import { useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Search from "../../Cards/SearchBox";
 // import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const storage = JSON.parse(localStorage.getItem("jwtData"));
-  const data = storage?.data;
+  const [role, setRole] = useState(null);
+  const [name, setName] = useState(null);
+
+  useEffect(() => {
+    const storage = JSON.parse(localStorage.getItem("jwtData"));
+    const data = storage?.data;
+
+    setRole(data?.role);
+    setName(data?.name);
+  }, []);
+
   // const user = useSelector((state) => state.auth.userData);
+
+  const handleLogout = () => {
+    localStorage.removeItem("jwtData");
+    setRole(null);
+  };
 
   return (
     <nav className="navbar">
@@ -17,21 +33,23 @@ const Navbar = () => {
         <Search />
         <div className="links">
           <Link to="/editor">Editor</Link>
-          <Link to={`${data?.role === "admin" ? "/admin" : "/profile"}`}>
+          <Link to={`${role === "admin" ? "/admin" : "/profile"}`}>
             Profile
           </Link>
-          {data?.role === "admin" ? (
+          {role === "admin" ? (
             "Welcome, Admin!"
-          ) : data?.role === "user" ? (
-            "Welcome, User!"
+          ) : role === "user" ? (
+            <>{name && `Welcome, ${name}!`}</>
           ) : (
             <>
               <Link to="/login">Login</Link>
               <Link to="/register">Register</Link>
             </>
           )}
-          {data?.role && (
-            <button onClick={() => localStorage.clear()}>Logout</button>
+          {role && (
+            <Link to="/" onClick={handleLogout}>
+              Logout
+            </Link>
           )}
         </div>
       </div>
