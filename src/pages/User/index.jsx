@@ -8,10 +8,10 @@ import Input from "../../components/Cards/Message/index";
 const UserPage = () => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
-  const [messages, setMessages] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
   const onMessageSend = (message) => {
-    setMessages((prevMessages) => [...prevMessages, message]);
+    setRefresh((prev) => !prev);
   };
 
   useEffect(() => {
