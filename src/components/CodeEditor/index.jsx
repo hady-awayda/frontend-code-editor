@@ -16,10 +16,10 @@ const CodeEditor = ({ sourceCodes }) => {
   const editorRef = useRef(null);
   const [value, setValue] = useState("");
   const [files, setFiles] = useState([]);
+  const [index, setIndex] = useState(0);
   const [title, setTitle] = useState("main.py");
   const [selectedFileId, setSelectedFileId] = useState(0);
   const [language, setLanguage] = useState("python");
-  const [index, setIndex] = useState(0);
 
   const onMount = (editor, monaco) => {
     editorRef.current = editor;

@@ -23,3 +23,5 @@ const dataSlice = createSlice({
 export const { setUser, setConversations, setSourceCodes } = dataSlice.actions;
 
 export default dataSlice.reducer;
+
+// seperate actions into multiple slices

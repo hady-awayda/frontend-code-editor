@@ -1,16 +1,8 @@
-import axios from "../../../config/axiosConfig";
+import fetchBase from "../base/read";
 
-const fetchAdminData = async () => {
-  const { token } = JSON.parse(localStorage.getItem("jwtData")) || {};
-  try {
-    const { data } = await axios.get("/admin", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+const get = () =>
+  fetchBase(async (axiosInstance) => {
+    return await axiosInstance.get(`/admin`);
+  });
 
-    return data.data;
-  } catch (error) {
-    throw error;
-  }
-};
-
-export default fetchAdminData;
+export default get;

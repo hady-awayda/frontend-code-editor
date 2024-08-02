@@ -3,7 +3,7 @@ import storeToken from "../../../utils/helpers/storeToken";
 
 const login = async (email, password) => {
   try {
-    const { data } = await axios.post("http://localhost:8080/api/auth/login", {
+    const { data } = await axios.post("/auth/login", {
       email,
       password,
     });

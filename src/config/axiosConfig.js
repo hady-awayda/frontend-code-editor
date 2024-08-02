@@ -1,7 +1,13 @@
 import axios from "axios";
 
-axios.defaults.baseURL = import.meta.env.VITE_APP_BASE_URL;
-axios.defaults.baseURL = import.meta.env.VITE_APP_DEPLOYMENT_BASE_URL;
-console.log(import.meta.env.VITE_APP_DEPLOYMENT_BASE_URL);
+const { token } = JSON.parse(localStorage.getItem("jwtData")) || {};
 
-export default axios;
+const axiosInstance = axios.create({
+  baseURL: import.meta.env.VITE_APP_DEPLOYMENT_BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  },
+});
+
+export default axiosInstance;

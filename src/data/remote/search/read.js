@@ -1,17 +1,8 @@
-import axios from "../../../config/axiosConfig";
+import fetchBase from "../base/read";
 
-const search = async (username) => {
-  const { token } = JSON.parse(localStorage.getItem("jwtData")) || {};
+const get = (params) =>
+  fetchBase(async (axiosInstance, { userData }) => {
+    return await axiosInstance.get(`/search/${params}`);
+  });
 
-  try {
-    const { data } = await axios.get(`/search/${username}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-
-    return data.data;
-  } catch (error) {
-    throw error;
-  }
-};
-
-export default search;
+export default get;
