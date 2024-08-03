@@ -11,7 +11,7 @@ const fetchSuggestions = async (text) => {
     const response = await axios.post(
       "https://api.openai.com/v1/chat/completions",
       {
-        model: "gpt-4o",
+        model: "gpt-3.5-turbo",
         messages: [{ role: "user", content: text }],
         temperature: 0.7,
       },
@@ -27,7 +27,7 @@ const fetchSuggestions = async (text) => {
 
     return response.data.choices.map((choice) => choice.message.content.trim());
   } catch (error) {
-    console.error("Error fetching suggestions:", error);
+    console.error(error.response.data.error.message);
     return [];
   }
 };

@@ -17,6 +17,7 @@ const fetchBase = async (request) => {
 
     return data.data;
   } catch (error) {
+    console.error(error.response.data.error.message);
     throw error;
   }
 };
