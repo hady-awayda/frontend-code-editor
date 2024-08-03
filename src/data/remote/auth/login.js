@@ -10,8 +10,10 @@ const login = async (email, password) => {
 
     storeToken(data.authorization);
   } catch (error) {
-    console.log(error.response.data);
-    throw new Error(error.response.data.message || "Login failed");
+    console.error("Full error object:", error);
+    console.error("Error response:", error.response);
+    console.error("Error message:", error.message);
+    throw new Error(error.response?.data?.message || "Login failed");
   }
 };
 
